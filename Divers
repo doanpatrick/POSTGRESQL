@@ -1,1 +1,15 @@
 
+-- Connexion à PostgreSQL
+\c postgres
+
+-- Créer la base si elle n'existe pas
+CREATE DATABASE test WITH OWNER = postgres ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8' TEMPLATE = template0;
+
+-- Donner les droits à postgres (souvent implicite si owner, mais on le refait proprement)
+GRANT CONNECT, TEMPORARY, CREATE ON DATABASE test TO postgres;
+
+-- Donner les droits à zapp_pg_sal_fr_full
+GRANT CONNECT, TEMPORARY, CREATE ON DATABASE test TO zapp_pg_sal_fr_full;
+
+-- Donner les droits à DBPG_ZPGSAL01_DBA (seulement CREATE)
+GRANT CREATE ON DATABASE test TO "DBPG_ZPGSAL01_DBA";
