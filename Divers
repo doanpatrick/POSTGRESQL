@@ -15,7 +15,26 @@ GRANT CONNECT, TEMPORARY, CREATE ON DATABASE test TO zapp_pg_sal_fr_full;
 GRANT CREATE ON DATABASE test TO "DBPG_ZPGSAL01_DBA";
 
 
+voir les droits
+
 SELECT grantee, privilege_type
 FROM information_schema.role_database_privileges
 WHERE database_name = 'nom_de_la_base'
   AND grantee = 'PUBLIC';
+
+
+SELECT grantee, privilege_type
+FROM information_schema.role_database_privileges
+WHERE database_name = 'test'
+  AND grantee = 'PUBLIC';
+
+
+
+SELECT database_name, grantee, privilege_type
+FROM information_schema.role_database_privileges
+WHERE database_name = 'test';
+
+
+SELECT datname, datacl
+FROM pg_database
+WHERE datname = 'test';
