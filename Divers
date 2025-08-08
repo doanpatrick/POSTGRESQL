@@ -1,3 +1,11 @@
+voir les schemas
+
+SELECT schema_name
+FROM information_schema.schemata;
+
+
+
+
 
 -- Connexion à PostgreSQL
 \c postgres
