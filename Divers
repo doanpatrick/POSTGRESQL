@@ -1,3 +1,21 @@
+
+
+Vérifier les connexions actives :
+SELECT pid, usename, application_name, state, query
+FROM pg_stat_activity;
+
+Augmenter max_connections (si le serveur a assez de RAM) :
+SHOW max_connections;
+-- Modifier dans postgresql.conf
+max_connections = 300
+
+Tuer les connexions inutiles (temporaire) :
+
+SELECT pg_terminate_backend(pid)
+FROM pg_stat_activity
+WHERE state = 'idle';
+
+
 voir les schemas
 
 SELECT schema_name
