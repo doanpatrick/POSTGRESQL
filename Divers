@@ -20,6 +20,22 @@ FROM pg_stat_activity
 WHERE state = 'idle';
 
 
+
+SELECT pg_terminate_backend(pid)
+FROM pg_stat_activity
+WHERE usename = 'monuser'
+  AND pid <> pg_backend_pid();  -- exclut ta propre session
+
+
+SELECT pg_terminate_backend(pid)
+FROM pg_stat_activity
+WHERE usename = 'monuser'
+  AND state = 'idle'
+  AND pid <> pg_backend_pid();
+
+
+
+
 voir les schemas
 
 SELECT schema_name
