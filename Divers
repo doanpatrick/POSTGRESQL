@@ -19,13 +19,15 @@ SELECT pg_terminate_backend(pid)
 FROM pg_stat_activity
 WHERE state = 'idle';
 
-
+Kill de toute les session d'un user
 
 SELECT pg_terminate_backend(pid)
 FROM pg_stat_activity
 WHERE usename = 'monuser'
   AND pid <> pg_backend_pid();  -- exclut ta propre session
 
+
+Kill de toute les session d'un user mais idle
 
 SELECT pg_terminate_backend(pid)
 FROM pg_stat_activity
